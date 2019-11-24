@@ -1,16 +1,20 @@
 import React from 'react';
 import Head from 'next/head';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
-const Interactube =({Component}) => {
+import AppLayout from '../components/AppLayout';
+
+const Interactube = ({ Component }) => {
 	return(
 		<>
 			<Head>
 				<title>Interactube</title>
+				<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/antd/3.23.6/antd.min.css" />
 			</Head>
-			<Component />
+			<AppLayout>
+				<Component />
+			</AppLayout>
 		</>
-	)
+	);
 };
 
 export default Interactube;
