@@ -1,30 +1,46 @@
 import React from 'react';
+import { Typography, Progress } from 'antd';
+import DialogItem from './DialogItem';
+import hmsToSec from '../func/hmsToSec';
 
-const dummyDialogs = [
-	{
-		title: 'question 1',
-		dialogItems: [
-			{content: 'answer 1', jumpTo: '01:50'},
-			{content: 'answer 2', jumpTo: '02:40'},
-		],
-		inTime: '0:20',
-		outTime: '0:30',
-	},
-	{
-		title: 'question 2',
-		dialogItems: [
-			{content: 'answer 3', jumpTo: '03:10'},
-			{content: 'answer 4', jumpTo: '05:30'},
-			{content: 'answer 5', jumpTo: '06:10'},
-		],
-		inTime: '0:50',
-		outTime: '0:55',
-	},
-];
+const { Title } = Typography;
 
-
-const Dialog = () => {
-
+const Dialog = ( { dialogs, playedSec, player } ) => {
+	return (
+		<div>
+			{
+				dialogs.map((dialog) => {
+					return (
+						<div>
+						{
+							playedSec > hmsToSec(dialog.inTime) &&
+							playedSec < hmsToSec(dialog.outTime) &&
+							<div>
+								<div>
+									<Title level={3}>{dialog.title}</Title>
+								</div>
+								<div style={{width: 250}}>
+									<Progress percent={
+										100-100*(playedSec-hmsToSec(dialog.inTime))/(hmsToSec(dialog.outTime)-hmsToSec(dialog.inTime))
+									} showInfo={false} size="small"/>
+								</div>
+								<div>
+									{
+										dialog.dialogItems.map((item) => {
+											return (
+												<DialogItem dialog={item.content} jumpTo={item.jumpTo} player={player} />
+											)
+										})
+									}
+								</div>
+							</div>
+						}
+						</div>
+					);
+				})
+			}
+		</div>
+	);
 };
 
 export default Dialog;
