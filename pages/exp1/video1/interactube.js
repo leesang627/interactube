@@ -20,6 +20,13 @@ const Interactube = () => {
 				url='https://www.youtube.com/watch?v=LrJsWl9miZY'
 				controls={true}
 				playing={true}
+				config={{
+					youtube: {
+						playerVars: {
+							start: 1,
+						}
+					}
+				}}
 				onProgress={handleProgress}
 			/>
 			<DialogItem playedSec={playedSec} inTime={10} outTime={20} dialog="hello" jumpTo="10:00" player={player}/>

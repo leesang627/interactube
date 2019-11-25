@@ -8,6 +8,13 @@ const Original = () => {
 				url='https://www.youtube.com/watch?v=LrJsWl9miZY'
 				controls={true}
 				playing={true}
+				config={{
+					youtube: {
+						playerVars: {
+							start: 1,
+						}
+					}
+				}}
 			/>
 		</div>
 	)

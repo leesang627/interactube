@@ -8,6 +8,7 @@ const Interactube = ({ Component }) => {
 		<>
 			<Head>
 				<title>Interactube</title>
+				<link rel="shortcut icon" href="/public/static/interactube_icon.ico" />
 				<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/antd/3.23.6/antd.min.css" />
 			</Head>
 			<AppLayout>
