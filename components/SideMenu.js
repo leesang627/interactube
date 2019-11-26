@@ -1,16 +1,44 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import { Icon, Menu, Layout } from 'antd';
+import { useDispatch } from 'react-redux';
+import { changePlayerMode, changeVideoUrl } from '../reducers/player';
 
 const { SubMenu } = Menu;
 const { Sider } = Layout;
 
 const SideMenu = () => {
+	const dispatch = useDispatch();
+	const [videoUrl, setVideoUrl] = useState('');
+
+	const splitKey = (key) => {
+		return {
+			video: key.split('-')[0],
+			mode: key.split('-')[1],
+		}
+	};
+
+	const videoToUrl = (video) => {
+		switch(video) {
+			case "video1": return "https://www.youtube.com/watch?v=cVPX3tzQwo0";
+			case "video2": return "https://www.youtube.com/watch?v=LrJsWl9miZY";
+			default: return "https://www.youtube.com/";
+		}
+	};
+
+	const handleClickMenu = (e) => {
+		dispatch(changePlayerMode(splitKey(e.key).mode));
+		dispatch(changeVideoUrl(videoToUrl(splitKey(e.key).video)));
+	};
+
 	return (
 		<Sider width={200} style={{ background: '#fff' }}>
 			<Menu
 				mode="inline"
 				style={{ height: '100%', borderRight: 0 }}
+				onClick={handleClickMenu}
+				defaultSelectedKeys={['video1-original']}
+				defaultOpenKeys={['sub1']}
 			>
 				<SubMenu
 					key="sub1"
@@ -21,37 +49,22 @@ const SideMenu = () => {
 						</span>
 					}
 				>
-					<Menu.Item key="1"><Link href="/exp1/video1/original"><a>Original</a></Link></Menu.Item>
-					<Menu.Item key="2"><Link href="/exp1/video1/bookmarks"><a>Bookmarks</a></Link></Menu.Item>
-					<Menu.Item key="3"><Link href="/exp1/video1/Interactube"><a>Interactube</a></Link></Menu.Item>
+					<Menu.Item key="video1-original">Original</Menu.Item>
+					<Menu.Item key="video1-bookmarks">Bookmarks</Menu.Item>
+					<Menu.Item key="video1-interactube">Interactube</Menu.Item>
 				</SubMenu>
 				<SubMenu
 					key="sub2"
 					title={
 						<span>
-                <Icon type="laptop" />
-                subnav 2
+                <Icon type="youtube" />
+                영상 2
               </span>
 					}
 				>
-					<Menu.Item key="5">option5</Menu.Item>
-					<Menu.Item key="6">option6</Menu.Item>
-					<Menu.Item key="7">option7</Menu.Item>
-					<Menu.Item key="8">option8</Menu.Item>
-				</SubMenu>
-				<SubMenu
-					key="sub3"
-					title={
-						<span>
-                <Icon type="notification" />
-                subnav 3
-              </span>
-					}
-				>
-					<Menu.Item key="9">option9</Menu.Item>
-					<Menu.Item key="10">option10</Menu.Item>
-					<Menu.Item key="11">option11</Menu.Item>
-					<Menu.Item key="12">option12</Menu.Item>
+					<Menu.Item key="video2-original">Original</Menu.Item>
+					<Menu.Item key="video2-bookmarks">Bookmarks</Menu.Item>
+					<Menu.Item key="video2-interactube">Interactube</Menu.Item>
 				</SubMenu>
 			</Menu>
 		</Sider>

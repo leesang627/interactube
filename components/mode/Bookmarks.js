@@ -1,6 +1,5 @@
-import React, { useState, useRef } from 'react';
-import ReactPlayer from 'react-player';
-import BookmarkItem from '../../../components/BookmarkItem';
+import React from 'react';
+import BookmarkItem from '../BookmarkItem';
 
 const dummyBookmarks = [
 	{time: "04:00", title: "아직도 군대가는 꿈 꾼다는 시민옹ㅠㅠ (군대 트루러버?)"},
@@ -15,31 +14,16 @@ const dummyBookmarks = [
 	{time: "01:06:44", title: "모병제&징병제의 향후 논의 방향은?"},
 ];
 
-const Bookmarks = () => {
-	const player = useRef(null);
-
+const Bookmarks = ({ player }) => {
 	return (
-		<div>
-			<ReactPlayer
-				ref={player}
-				url='https://www.youtube.com/watch?v=LrJsWl9miZY'
-				controls={true}
-				playing={true}
-				config={{
-					youtube: {
-						playerVars: {
-							start: 1,
-						}
-					}
-				}}
-			/>
+		<>
 			{dummyBookmarks.map((bookmark) => {
 				return (
 					<BookmarkItem key={bookmark.title} bookmark={bookmark} player={player}/>
 				);
 			})}
-		</div>
-	);
+		</>
+	)
 };
 
 export default Bookmarks;

@@ -16,11 +16,10 @@ const HeadMenu = () => {
 			<Menu
 				theme="dark"
 				mode="horizontal"
-				defaultSelectedKeys={['0']}
 				style={{ lineHeight: '64px' }}
 			>
 				<Menu.Item key="0"><Link href="/about"><a>실험 소개</a></Link></Menu.Item>
-				<Menu.Item key="1"><Link href="/exp1/video1/original"><a>실험 1</a></Link></Menu.Item>
+				<Menu.Item key="1"><Link href="/exp1"><a>실험 1</a></Link></Menu.Item>
 				<Menu.Item key="2">실험 2</Menu.Item>
 				<Menu.Item key="3">실험 3</Menu.Item>
 			</Menu>
@@ -32,8 +31,6 @@ const HeadMenu = () => {
 					float: left;
 				}
 			`}</style>
-
-
 		</Header>
 	);
 };
