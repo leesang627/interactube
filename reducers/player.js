@@ -1,6 +1,6 @@
 const initialState = {
 	mode: 'original',
-	videoUrl: 'https://www.youtube.com/watch?v=LrJsWl9miZY',
+	videoUrl: 'https://www.youtube.com/watch?v=cVPX3tzQwo0',
 };
 
 export const CHANGE_PLAYER_MODE = 'CHANGE_PLAYER_MODE';

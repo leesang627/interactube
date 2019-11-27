@@ -9,8 +9,8 @@ const HeadMenu = () => {
 	return (
 		<Header className="header">
 			<div className="logo">
-				<Title level={2} style={{color: "white"}}>
-					<Link href="/"><a>Interactube</a></Link>
+				<Title level={2} >
+					<Link href="/"><a style={{color: "white"}}>Interactube</a></Link>
 				</Title>
 			</div>
 			<Menu
