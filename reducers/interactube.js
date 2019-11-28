@@ -35,9 +35,9 @@ export const addDialog = (videoId, dialog) => ({
 	payload: { videoId, dialog }
 });
 
-export const deleteDialog = (videoId) => ({
+export const deleteDialog = (videoId, index) => ({
 	type: DELETE_DIALOG,
-	payload: { videoId }
+	payload: { videoId, index }
 });
 
 const interactube = produce((draft, action) => {
@@ -47,7 +47,7 @@ const interactube = produce((draft, action) => {
 			return;
 		}
 		case DELETE_DIALOG: {
-			delete draft[action.payload.videoId];
+			draft[action.payload.videoId].dialogs.splice(action.payload.index,1);
 			return;
 		}
 	}

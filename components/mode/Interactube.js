@@ -1,8 +1,8 @@
 import React from 'react';
-import Dialog from '../Dialog';
 import { useSelector } from 'react-redux';
-import DialogList from '../DialogList';
-import DialogForm from '../DialogForm';
+import Dialog from '../dialog/Dialog';
+import DialogList from '../dialog/DialogList';
+import DialogForm from '../dialog/DialogForm';
 
 const Interactube = ({playedSec, player}) => {
 	const interactube = useSelector(state => state.interactube);

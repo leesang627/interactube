@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Typography } from 'antd';
 import moment from 'moment';
-import hmsToSec from '../func/hmsToSec';
+import hmsToSec from '../../func/hmsToSec';
 
 const { Text } = Typography;
 

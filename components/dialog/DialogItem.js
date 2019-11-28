@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from 'antd';
-import hmsToSec from '../func/hmsToSec';
+import hmsToSec from '../../func/hmsToSec';
 
 const DialogItem = ({ dialog, jumpTo, player }) => {
 	const handleJumpTo = () => {

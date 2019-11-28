@@ -1,7 +1,7 @@
 import React from 'react';
 import { Typography, Progress } from 'antd';
 import DialogItem from './DialogItem';
-import hmsToSec from '../func/hmsToSec';
+import hmsToSec from '../../func/hmsToSec';
 
 const { Title } = Typography;
 

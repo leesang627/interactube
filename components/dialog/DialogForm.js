@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Form, Input, Button, Row, Col } from 'antd';
-import { addDialog } from '../reducers/interactube';
+import { addDialog } from '../../reducers/interactube';
 
 const DialogForm = ( props ) => {
 	const dispatch = useDispatch();
