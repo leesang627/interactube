@@ -44,11 +44,11 @@ const interactube = produce((draft, action) => {
 	switch (action.type) {
 		case ADD_DIALOG: {
 			draft[action.payload.videoId].dialogs.push(action.payload.dialog);
-			break;
+			return;
 		}
 		case DELETE_DIALOG: {
 			delete draft[action.payload.videoId];
-			break;
+			return;
 		}
 	}
 }, initialState);

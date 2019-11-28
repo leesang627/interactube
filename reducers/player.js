@@ -1,3 +1,5 @@
+import produce from 'immer';
+
 const initialState = {
 	mode: 'original',
 	videoUrl: 'https://www.youtube.com/watch?v=cVPX3tzQwo0',
@@ -8,33 +10,26 @@ export const CHANGE_VIDEO_URL = 'CHANGE_VIDEO_URL';
 
 export const changePlayerMode = (mode) => ({
 	type: CHANGE_PLAYER_MODE,
-	data: mode,
+	payload: mode,
 });
 
 export const changeVideoUrl = (url) => ({
 	type: CHANGE_VIDEO_URL,
-	data: url,
+	payload: url,
 });
 
-export default (state = initialState, action) => {
-	switch (action.type) {
+const player = produce((draft, action) => {
+	switch(action.type) {
 		case CHANGE_PLAYER_MODE: {
-			return {
-				...state,
-				mode: action.data,
-			};
+			draft.mode = action.payload;
+			return;
 		}
 		case CHANGE_VIDEO_URL: {
-			return {
-				...state,
-				videoUrl: action.data,
-			};
-		}
-		default: {
-			return {
-				...state,
-			};
+			draft.videoUrl = action.payload;
+			return;
 		}
 	}
-};
+}, initialState);
+
+export default player;
 
